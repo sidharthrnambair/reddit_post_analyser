@@ -20,17 +20,28 @@ reddit = praw.Reddit(
 )
 
 def analyze_sentiment(comment_text):
+    """
+    Analyze sentiment of a given comment text.
+
+    Args:
+        comment_text (str): The text of the comment.
+
+    Returns:
+        str: The sentiment of the comment ('positive', 'negative', or 'neutral').
+    """
     analyzer = SentimentIntensityAnalyzer()
     sentiment_score = analyzer.polarity_scores(comment_text)['compound']
 
     if sentiment_score >= 0.05:
         return 'positive'
-    elif sentiment_score <= -0.05:
+    if sentiment_score <= -0.05:
         return 'negative'
-    else:
-        return 'neutral'
+    return 'neutral'
 
 def main():
+    """
+    Main function to analyze sentiment of comments in a Reddit submission.
+    """
     # Replace 'post_id' with the actual post ID you want to analyze
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
