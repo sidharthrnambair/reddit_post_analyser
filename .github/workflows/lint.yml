@@ -11,11 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v4  
-
     - name: Set up Python
-      uses: actions/setup-python@v2 
+      uses: actions/setup-python@v2
       with:
         python-version: 3.8
 
@@ -26,9 +23,9 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint reddit_post_analyser.py
+        pylint reddit_post_analyzer.py
 
     - name: Check formatting
-      run: black --check reddit_post_analyser.py
+      run: black --check reddit_post_analyzer.py
 
   
