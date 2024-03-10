@@ -24,12 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install praw vaderSentiment pylint black
 
-    - name: Set up workspace
-      run: |
-        mkdir -p $HOME/workspace
-        mv $GITHUB_WORKSPACE/* $HOME/workspace/
-        cd $HOME/workspace
-
     - name: Lint code
       run: |
         pylint reddit_post_analyser.py
@@ -42,7 +36,4 @@ jobs:
       run: |
         black reddit_post_analyser.py
 
-    - name: Move files back
-      run: |
-        mv $HOME/workspace/* $GITHUB_WORKSPACE/
 
