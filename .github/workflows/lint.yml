@@ -28,7 +28,7 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint reddit_post_analyser.py
+        pylint --rcfile=.pylintrc reddit_post_analyser.py
 
     - name: Check formatting
       run: |
