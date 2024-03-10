@@ -1,3 +1,7 @@
+"""
+reddit_post_analyser.py - A script to fetch comments from a Reddit post and analyze their sentiment.
+"""
+
 import os
 from dotenv import load_dotenv
 import praw
@@ -43,7 +47,7 @@ def main():
     """
     Main function to fetch comments from a Reddit post and analyze their sentiment.
     """
-   
+  
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
 
