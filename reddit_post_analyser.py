@@ -34,10 +34,9 @@ def analyze_sentiment(comment_text):
 
     if sentiment_score >= 0.05:
         return 'positive'
-    elif sentiment_score <= -0.05:
+    if sentiment_score <= -0.05:
         return 'negative'
-    else:
-        return 'neutral'
+    return 'neutral'
 
 def main():
     """
