@@ -26,6 +26,9 @@ jobs:
         pylint reddit_post_analyser.py
 
     - name: Check formatting
-      run: black --check reddit_post_analyser.py
+      run: |
+        black --check reddit_post_analyser.py
 
-  
+    - name: Auto-fix formatting
+      run: |
+        black reddit_post_analyser.py
