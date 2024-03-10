@@ -1,11 +1,8 @@
 import os
-import praw
+import sys  # Moved standard library import here
 from dotenv import load_dotenv
+import praw  # Reordered third-party imports
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import sys
-
-# Add the parent directory to the sys.path
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 load_dotenv()
 
@@ -24,6 +21,15 @@ reddit = praw.Reddit(
 )
 
 def analyze_sentiment(comment_text):
+    """
+    Analyze the sentiment of the given text.
+
+    Parameters:
+    - comment_text (str): The text to analyze.
+
+    Returns:
+    - str: The sentiment label ('positive', 'negative', or 'neutral').
+    """
     analyzer = SentimentIntensityAnalyzer()
     sentiment_score = analyzer.polarity_scores(comment_text)['compound']
 
@@ -35,7 +41,10 @@ def analyze_sentiment(comment_text):
         return 'neutral'
 
 def main():
-    
+    """
+    Main function to fetch comments from a Reddit post and analyze their sentiment.
+    """
+   
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
 
