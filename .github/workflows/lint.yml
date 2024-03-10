@@ -12,7 +12,9 @@ jobs:
 
     steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v14 
+      uses: actions/setup-node@v4  # Use Node.js 14 via the `lts` alias
+        with:
+          node-version: 'lts'
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -35,6 +37,7 @@ jobs:
     - name: Auto-fix formatting
       run: |
         black reddit_post_analyser.py
+
 
 
 
