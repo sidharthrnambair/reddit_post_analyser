@@ -1,3 +1,4 @@
+"""Module providing a function printing python version."""
 import os
 import praw
 from dotenv import load_dotenv
