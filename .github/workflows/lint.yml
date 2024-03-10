@@ -22,15 +22,10 @@ jobs:
         pip install praw vaderSentiment pylint black
         cd $GITHUB_WORKSPACE
 
-    - name: Copy .pylintrc if exists
-      run: |
-        if [ -f .pylintrc ]; then cp .pylintrc .; fi
-
     - name: Lint code
       run: |
-        pylint --rcfile .pylintrc reddit_post_analyser.py
+        pylint --init-hook="import sys, os; sys.path.append(os.path.dirname(os.path.realpath('.')))" reddit_post_analyser.py
 
     - name: Check formatting
       run: |
         black --check reddit_post_analyser.py
-
