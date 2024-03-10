@@ -2,6 +2,10 @@ import os
 import praw
 from dotenv import load_dotenv
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import sys
+
+# Add the parent directory to the sys.path
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 load_dotenv()
 
@@ -31,7 +35,7 @@ def analyze_sentiment(comment_text):
         return 'neutral'
 
 def main():
-    # Replace 'post_id' with the actual post ID you want to analyze
+    
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
 
