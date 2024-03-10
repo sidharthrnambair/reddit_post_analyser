@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v20  
+        uses: actions/setup-node@v14  # Update to use Node.js 14
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -46,4 +46,3 @@ jobs:
 
       - name: Check formatting
         run: black --check reddit_post_analyser.py
-
