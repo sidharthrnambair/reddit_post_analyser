@@ -47,7 +47,7 @@ def main():
     """
     Main function to fetch comments from a Reddit post and analyze their sentiment.
     """
-  
+    # Replace 'post_id' with the actual post ID you want to analyze
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
 
