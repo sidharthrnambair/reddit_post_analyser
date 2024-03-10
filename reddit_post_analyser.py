@@ -1,10 +1,6 @@
-"""
-reddit_post_analyser.py - A script to fetch comments from a Reddit post and analyze their sentiment.
-"""
-
 import os
-from dotenv import load_dotenv
 import praw
+from dotenv import load_dotenv
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 load_dotenv()
@@ -24,29 +20,17 @@ reddit = praw.Reddit(
 )
 
 def analyze_sentiment(comment_text):
-    """
-    Analyze the sentiment of the given text.
-
-    Parameters:
-    - comment_text (str): The text to analyze.
-
-    Returns:
-    - str: The sentiment label ('positive', 'negative', or 'neutral').
-    """
     analyzer = SentimentIntensityAnalyzer()
     sentiment_score = analyzer.polarity_scores(comment_text)['compound']
 
     if sentiment_score >= 0.05:
         return 'positive'
-    if sentiment_score <= -0.05:
+    elif sentiment_score <= -0.05:
         return 'negative'
-    
-    return 'neutral'
+    else:
+        return 'neutral'
 
 def main():
-    """
-    Main function to fetch comments from a Reddit post and analyze their sentiment.
-    """
     # Replace 'post_id' with the actual post ID you want to analyze
     post_id = '1baaigq'
     submission = reddit.submission(id=post_id)
@@ -58,3 +42,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
