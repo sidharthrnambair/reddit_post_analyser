@@ -11,32 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 'lts'
-
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: 3.8
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install praw vaderSentiment pylint black
+        pip install praw vaderSentiment
 
     - name: Lint code
       run: |
-        pylint --rcfile=.pylintrc reddit_post_analyser.py
+        pylint reddit_post_analyser.py
 
     - name: Check formatting
-      run: |
-        black --check reddit_post_analyser.py
+      run: black --check reddit_post_analyser.py
 
-    - name: Auto-fix formatting
-      run: |
-        black reddit_post_analyser.py
 
 
 
