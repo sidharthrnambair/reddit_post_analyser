@@ -22,10 +22,15 @@ jobs:
         pip install praw vaderSentiment pylint black
         cd $GITHUB_WORKSPACE
 
+    - name: Set PYTHONPATH
+      run: |
+        export PYTHONPATH=$GITHUB_WORKSPACE
+
     - name: Lint code
       run: |
-        pylint --init-hook="import sys, os; sys.path.append(os.path.dirname(os.path.realpath('.')))" reddit_post_analyser.py
+        pylint reddit_post_analyser.py
 
     - name: Check formatting
       run: |
         black --check reddit_post_analyser.py
+
