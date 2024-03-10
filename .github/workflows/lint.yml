@@ -4,20 +4,17 @@ on:
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
-     steps:
+
+    steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v4 
-   
-     steps:
+      uses: actions/setup-node@v4  
+
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v2 
       with:
         python-version: 3.8
 
@@ -32,3 +29,5 @@ jobs:
 
     - name: Check formatting
       run: black --check reddit_post_analyser.py
+
+  
