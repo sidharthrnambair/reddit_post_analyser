@@ -26,7 +26,7 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint reddit_post_analyser.py --disable=missing-module-docstring
+        pylint reddit_post_analyser.py
 
     - name: Check formatting
       run: |
@@ -35,3 +35,4 @@ jobs:
     - name: Auto-fix formatting
       run: |
         black reddit_post_analyser.py
+
