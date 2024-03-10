@@ -16,25 +16,15 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Install dependencies
+    - name: Install dependencies and set working directory
       run: |
         python -m pip install --upgrade pip
         pip install praw vaderSentiment pylint black
-
-    - name: Display Python and Pip versions
-      run: |
-        python --version
-        pip --version
-
-    - name: Set working directory and list files
-      run: |
         cd $GITHUB_WORKSPACE
-        ls -la
 
     - name: Copy .pylintrc if exists
       run: |
-        cd $GITHUB_WORKSPACE
-        if [ -f .pylintrc ]; then cp .pylintrc $GITHUB_WORKSPACE; fi
+        if [ -f .pylintrc ]; then cp .pylintrc .; fi
 
     - name: Lint code
       run: |
@@ -43,3 +33,4 @@ jobs:
     - name: Check formatting
       run: |
         black --check reddit_post_analyser.py
+
