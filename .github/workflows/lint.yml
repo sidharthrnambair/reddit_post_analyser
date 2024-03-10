@@ -26,8 +26,10 @@ jobs:
         python --version
         pip --version
 
-    - name: Set working directory
-      run: cd $GITHUB_WORKSPACE
+    - name: Set working directory and copy .pylintrc
+      run: |
+        cd $GITHUB_WORKSPACE
+        cp .pylintrc $GITHUB_WORKSPACE
 
     - name: Lint code
       run: |
@@ -36,3 +38,4 @@ jobs:
     - name: Check formatting
       run: |
         black --check reddit_post_analyser.py
+
