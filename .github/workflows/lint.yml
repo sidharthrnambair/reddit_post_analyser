@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install black flake8
+          pip install black flake8 pylint
           python -m pip install --upgrade pip
           pip install praw vaderSentiment
 
@@ -46,3 +46,4 @@ jobs:
 
       - name: Check formatting
         run: black --check reddit_post_analyser.py
+
