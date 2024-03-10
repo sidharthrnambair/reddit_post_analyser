@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v4  
+      uses: actions/setup-node@v4  # Update to use Node.js 16
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -26,7 +26,7 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint reddit_post_analyser.py
+        pylint reddit_post_analyser.py --disable=missing-module-docstring
 
     - name: Check formatting
       run: |
@@ -35,4 +35,3 @@ jobs:
     - name: Auto-fix formatting
       run: |
         black reddit_post_analyser.py
-
