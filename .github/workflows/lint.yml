@@ -37,11 +37,12 @@ jobs:
       - name: Run linters
         run: |
           pylint reddit_post_analyser.py
-        - name: Run lint action
-          uses: wearerequired/lint-action@v2
-          with:
-            black: true
-            flake8: true
+          
+      - name: Run lint action
+        uses: wearerequired/lint-action@v2
+        with:
+          black: true
+          flake8: true
 
       - name: Check formatting
         run: black --check reddit_post_analyser.py
