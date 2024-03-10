@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: 3.8
 
@@ -24,7 +24,7 @@ jobs:
 
     - name: Lint code
       run: |
-        pylint reddit_post_analyzer.py
+        pylint reddit_post_analyser.py
 
     - name: Check formatting
-      run: black --check reddit_post_analyzer.py
+      run: black --check reddit_post_analyser.py
