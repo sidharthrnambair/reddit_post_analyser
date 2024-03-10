@@ -1,8 +1,6 @@
 name: Lint
 
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   push:
     branches:
       - main
@@ -27,9 +25,8 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install black flake8
           python -m pip install --upgrade pip
-          pip install praw vaderSentiment
+          pip install black flake8 pylint praw vaderSentiment
 
       - name: Run linters
         run: |
@@ -43,4 +40,3 @@ jobs:
 
       - name: Check formatting
         run: black --check reddit_post_analyser.py
-
